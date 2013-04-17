@@ -1,0 +1,82 @@
+<project
+    name="Splunk SDK for Android"
+    basedir=".."
+    default="build_release" >
+
+    <description>
+		Splunk SDK for Android
+    </description>
+
+    <property file="build/build.properties" />
+
+    <path id="project.class.path" >
+
+        <fileset dir="${lib}" >
+            <include name="**/*.jar" />
+        </fileset>
+    </path>
+
+    <target name="init" >
+
+        <delete dir="${temp_build}" />
+
+        <mkdir dir="${temp_build}" />
+    </target>
+
+    <target
+        name="compile"
+        depends="init"
+        description="compile the source" >
+
+        <mkdir dir="${temp_build}/${classes}" />
+
+        <javac
+            destdir="${temp_build}/${classes}"
+            srcdir="${src}:${xml_src}"
+            target="${javaClassTarget}" >
+
+            <classpath refid="project.class.path" />
+        </javac>
+    </target>
+
+    
+
+    
+    <target
+        name="build_release"
+        depends="compile"
+        description="build release distribution" >
+
+        <!-- Create the distribution directory -->
+
+
+        <copy todir="${temp_build}" >
+
+            <fileset file="LICENSE" />
+
+        </copy>
+        
+        <unzip src="${lib}/gson-2.1.jar" dest="${temp_build}/${classes}"/>
+
+        <jar jarfile="${temp_build}/${main_jar}-${releaseVersion}.jar" >
+
+            <fileset
+                dir="${temp_build}/${classes}"/>
+
+        </jar>
+
+        <delete dir="${temp_build}/${classes}" />
+
+        <tar
+            compression="${compressionType}"
+            destfile="${release}/${releaseName}-${releaseVersion}${suffix}" >
+
+            <zipfileset
+                dir="${temp_build}"
+                prefix="${releaseName}" />
+        </tar>
+
+        <delete dir="${temp_build}" />
+    </target>
+
+</project>
