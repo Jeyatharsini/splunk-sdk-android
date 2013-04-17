@@ -9,19 +9,20 @@ Splunk.
 #### Notes about the creation process of the Android SDK
 
 Android programs are commonly written and Java , compiled to bytecode, converted 
- to "dex" format and executed in [Android's Dalvik VM](http://en.wikipedia.org/wiki/Dalvik_%28software%29)
+to "dex" format and executed in [Android's Dalvik VM](http://en.wikipedia.org/wiki/Dalvik_%28software%29)
 
 As a starting point for creating the Splunk Android SDK , I took a copy of the 
 Splunk Java SDK(v 1.0.0).
-Note, this is not a Git fork or  branch of the Splunk Java SDK , but just a 
+
+Note, this is not a Git fork or branch of the Splunk Java SDK , but just a 
 straight file copy. When future releases of the Splunk Java SDK are made , the 
 changes can be manually merged into the common components in the Splunk Android 
 SDK.
+
 The next issue I had to tackle was that the Dalvik VM is not Java SE 6 
 compatible and the Splunk Java SDK uses XML Streaming classes that are only 
-available in Java SE 6.
-Fortunately the required classes are available and [Apache 2.0 open sourced here]
-(http://stax.codehaus.org/Home)
+available in Java SE 6.Fortunately the required classes are available and [Apache 2.0 open sourced here](http://stax.codehaus.org/Home)
+
 Some of these classes are in the javax.* package , so I also had to rename this 
 package to com.javax.* so that the Android "dx" converter tool wouldn't 
 complain about converter classes with "core library" package prefixes.
@@ -49,7 +50,7 @@ Android SDK to be :
 At the time of writing this, the current release size is 470 KB , but I feel we 
 can get this much smaller by stripping out unrequired functionality.For instance 
 , I have already stripped out the XML and CSV ResultsReaders , and just provided 
-the JSON ResultsReader.The ANT build script builds the the gson-2.1.jar file 
+the JSON ResultsReader.The ANT build script builds the gson-2.1.jar file 
 into the Android SDK release jar file.So developers only have to deal with 1 
 single jar file for development and production distribution.
 
@@ -114,13 +115,14 @@ picked up and added to the list of Android Dependencies.
 
 In the Splunk Android SDK "example" directory , I have included a few files from 
 a demo Android application I created that utilizes the SDK.It's not the full 
-project contents , but it is the main files that you can use a reference to get 
-up and running.
+project contents , but it is the main files that you can use as a reference to get 
+up and running. Note, they are just for reference , they won't compile without the 
+various other dependencies from the demo Android application project.
 
 * AndroidManifest.xml : examples of the required declarations (permissions, 
 service definition etc..)
 * LoggingService.java : an Android Service for logging events to Splunk
-* MainActivity.java : contains example of firing off a realtime search and then 
+* MainActivity.java : contains an example of firing off a realtime search and then 
 listening for results.This particular search is triggered by clicking a button.
 The search results are for twitter events that get rendered in the Android UI.
 The rendering is the tweeter's profile pic, handle and the tweet they sent.
@@ -146,7 +148,7 @@ This project was initiated by Damien Dallimore
 
 ## License
 
-The Splunk Java Software Development Kit is licensed under the Apache
+The Splunk Android Software Development Kit is licensed under the Apache
 License 2.0. Details can be found in the LICENSE file.
 
 
