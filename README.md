@@ -8,7 +8,7 @@ Splunk.
 
 #### Notes about the creation process of the Android SDK
 
-Android programs are commonly written and Java , compiled to bytecode, converted 
+Android programs are commonly written in Java , compiled to bytecode, converted 
 to "dex" format and executed in [Android's Dalvik VM](http://en.wikipedia.org/wiki/Dalvik_%28software%29)
 
 As a starting point for creating the Splunk Android SDK , I took a copy of the 
@@ -25,7 +25,7 @@ available in Java SE 6.Fortunately the required classes are available and [Apach
 
 Some of these classes are in the javax.* package , so I also had to rename this 
 package to com.javax.* so that the Android "dx" converter tool wouldn't 
-complain about converter classes with "core library" package prefixes.
+complain about converting classes with "core library" package prefixes.
 An alternative would be to strip out the use of all the XML streaming classes , 
 and recode this to a core Android XML API, an option I am still open to.
 
@@ -78,7 +78,7 @@ Here's what you need to get going with the Splunk Android SDK.
 #### Splunk
 
 If you haven't already installed Splunk, download it 
-[here](http://www.splunk.com/download). For more about installing and running 
+[here](http://www.splunk.com/download). For more info about installing and running 
 Splunk and system requirements, see 
 [Installing & Running Splunk](http://dev.splunk.com/view/SP-CAAADRV). 
 
@@ -93,14 +93,14 @@ To build the SDK from source , you will need ANT. The ANT build script is in
 the project's "build" directory.This will output a release tarball to the 
 "releases" directory.
     
-You can also [download the realease file](https://github.com/damiendallimore/splunk-sdk-android/tree/master/releases/splunk-android-sdk-0.5.tar.gz) to include the Splunk Android SDK
+You can also [download the release file](https://github.com/damiendallimore/splunk-sdk-android/tree/master/releases/splunk-android-sdk-0.5.tar.gz) to include the Splunk Android SDK
 in your applications. Untar the release and copy the jar file into your 
 environment.
 
 #### Google Android SDK
 
 I recommend using [Google's Android SDK](http://developer.android.com/sdk/index.html) 
-for your development. This will provision you with the appropriate envrironment 
+for your development. This will provision you with the appropriate environment 
 for creating, compiling, testing and running your Android application.
 
 #### Where to put the splunk-android-sdk-0.5.jar  file ?
