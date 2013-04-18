@@ -3,7 +3,7 @@
 ####FEATURES
 
 * SplunkLogger -> More Android device metrics pulled out
-* SplunkLogger -> Abstractions for  tcp, udp, http stream logging
+* SplunkLogger -> Abstractions for  tcp, udp, rest http stream logging
 * Storm integration(Nicholas Key)
 * HelloWorld Example project
 
@@ -11,7 +11,6 @@
 
 * changelog
 * version tagging
-* maven/gradle  (for gson and android jars , publishing sdk release to our repo , 
-* generating ide artifacts)
+* maven/gradle  (for gson and android jars , publishing sdk release to our repo , generating ide artifacts)
 * unit tests
 * merge latest java sdk release updates
